@@ -1,0 +1,7 @@
+EXPORTS
+ NVSDK_NGX_D3D12_Init_Ext=MockNrInit
+ NVSDK_NGX_D3D12_PopulateParameters_Impl=MockNrPopulate
+ NVSDK_NGX_D3D12_CreateFeature=MockNrCreate
+ NVSDK_NGX_D3D12_EvaluateFeature=MockNrEvaluate
+ NVSDK_NGX_D3D12_ReleaseFeature=MockNrRelease
+ NVSDK_NGX_D3D12_Shutdown1=MockNrShutdown

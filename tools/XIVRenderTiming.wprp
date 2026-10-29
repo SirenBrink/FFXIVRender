@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WindowsPerformanceRecorder Version="1.0" Author="XIVRender">
+  <Profiles>
+    <SystemCollector Id="KernelCollector" Name="XIVRender CPU scheduling">
+      <BufferSize Value="1024" />
+      <Buffers Value="128" />
+    </SystemCollector>
+    <EventCollector Id="GraphicsCollector" Name="XIVRender graphics queues">
+      <BufferSize Value="1024" />
+      <Buffers Value="128" />
+    </EventCollector>
+    <SystemProvider Id="CpuScheduling">
+      <Keywords>
+        <Keyword Value="ProcessThread" />
+        <Keyword Value="Loader" />
+        <Keyword Value="CSwitch" />
+        <Keyword Value="ReadyThread" />
+        <Keyword Value="SampledProfile" />
+      </Keywords>
+      <Stacks>
+        <Stack Value="CSwitch" />
+        <Stack Value="ReadyThread" />
+        <Stack Value="SampledProfile" />
+      </Stacks>
+    </SystemProvider>
+    <EventProvider Id="Dxgi" Name="Microsoft-Windows-DXGI" Level="5">
+      <Keywords><Keyword Value="0xf" /></Keywords>
+    </EventProvider>
+    <EventProvider Id="D3D11" Name="Microsoft-Windows-Direct3D11" Level="5">
+      <Keywords><Keyword Value="0xf" /></Keywords>
+    </EventProvider>
+    <EventProvider Id="GpuScheduler" Name="Microsoft-Windows-DxgKrnl" Level="5">
+      <Keywords><Keyword Value="0x277" /></Keywords>
+    </EventProvider>
+    <EventProvider Id="XivFrameStages" Name="88e925ad-5dbd-4b7c-9b60-70c87545a1d1" Level="5">
+      <Keywords><Keyword Value="0xffffffffffffffff" /></Keywords>
+    </EventProvider>
+    <Profile Id="XIVRender.Verbose.File" Name="XIVRender" Description="Bounded CPU scheduling and graphics queue diagnostic" LoggingMode="File" DetailLevel="Verbose">
+      <Collectors>
+        <SystemCollectorId Value="KernelCollector">
+          <SystemProviderId Value="CpuScheduling" />
+        </SystemCollectorId>
+        <EventCollectorId Value="GraphicsCollector">
+          <EventProviders>
+            <EventProviderId Value="Dxgi" />
+            <EventProviderId Value="D3D11" />
+            <EventProviderId Value="GpuScheduler" />
+            <EventProviderId Value="XivFrameStages" />
+          </EventProviders>
+        </EventCollectorId>
+      </Collectors>
+    </Profile>
+  </Profiles>
+</WindowsPerformanceRecorder>
